@@ -1,0 +1,6 @@
+{
+  "utterance": "tell me the definition of cat",
+  "set_context": {"_TestRunner": "data", "test": ""},
+  "intent_type": "fallback.wiktionary.definition.intent",
+  "expected_dialog": "fallback.wiktionary"
+} 
