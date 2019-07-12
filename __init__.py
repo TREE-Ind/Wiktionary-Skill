@@ -19,12 +19,16 @@ class WiktionarySkill(MycroftSkill):
         word = message.data.get('word')
         #Lookup the word using Wiktionary
         get_word_info = self.parser.fetch(word)
-        #Get first definition from wiktionary response
-        response = get_word_info[0]['definitions'][0]['text'][1]
-        #Log the definition
-        LOG.info(response)
+
         #Speak definition for requested word back to user
-        self.speak_dialog('fallback.wiktionary', {'word': word, 'definition': response})
+        try:
+            # Get first definition from wiktionary response
+            response = get_word_info[0]['definitions'][0]['text'][1]
+            # Log the definition
+            LOG.info(response)
+            self.speak_dialog('fallback.wiktionary', {'word': word, 'definition': response})
+        except:
+            self.speak_dialog('error.wiktionary')
 
 
 def create_skill():
